@@ -20,9 +20,14 @@ export function SyncedCron() {
       <fieldset>
         <legend>Add a job (log in server console)</legend>
         <Formik
-          initialValues={{ jobName: "", scheduleText: "" }}
+          initialValues={{ jobName: "", scheduleText: "", persist: true }}
           onSubmit={(values) =>
-            Meteor.call("syncedCronAdd", values.jobName, values.scheduleText)
+            Meteor.call(
+              "syncedCronAdd",
+              values.jobName,
+              values.scheduleText,
+              values.persist
+            )
           }
         >
           <Form>
@@ -36,6 +41,10 @@ export function SyncedCron() {
                 name="scheduleText"
                 placeholder="Schedule text expression..."
               />
+            </label>
+            <label>
+              Persist (log & sync)
+              <Field type="checkbox" name="persist" />
             </label>
             <button type="submit">Add</button>
           </Form>

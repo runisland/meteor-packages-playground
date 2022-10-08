@@ -4,7 +4,7 @@ import { Meteor } from "meteor/meteor";
 // SyncedCron can only be used server-side,
 // so the Methods implementation is also only on server
 Meteor.methods({
-  syncedCronAdd(jobName: string, scheduleText: string) {
+  syncedCronAdd(jobName: string, scheduleText: string, persist: boolean) {
     console.log(
       `SyncedCron add job name "${jobName}" with schedule text expression"${scheduleText}"`
     );
@@ -14,7 +14,7 @@ Meteor.methods({
         return parser.text(scheduleText);
       },
       job,
-      persist: true,
+      persist,
     });
   },
   syncedCronStart() {
