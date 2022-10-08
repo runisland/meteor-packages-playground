@@ -11,6 +11,8 @@
 
 /// <reference types="meteor-synced-cron" />
 
+import { SyncedCron } from "meteor/littledata:synced-cron";
+
 console.log("SyncedCron main server");
 
 // SyncedCron configuration
