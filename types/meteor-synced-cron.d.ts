@@ -10,6 +10,33 @@ declare module 'meteor/littledata:synced-cron' {
     namespace SyncedCron {
         // Add types for development here
 
+        function add(addOptions: {
+            /**
+             * *required* unique name of the job
+             */
+            name: string;
+            /**
+             * *required* when to run the job
+             *
+             * @param parser is a later.parse object
+             */
+            schedule: (parser: later.ParseStatic) => later.ScheduleData;
+            /**
+             * *required* the code to run
+             */
+            job: () => void;
+
+            /**
+             * Undocumented flag to enable synchronization and logging
+             * for this job
+             *
+             * Default `true`
+             *
+             * https://github.com/percolatestudio/meteor-synced-cron/blob/687e9ea308a287fe6347f94e0fb3eac5e2e21c12/synced-cron-server.js#L120-L124
+             */
+            persist?: boolean;
+        }): void;
+
         /**
          * You can configure SyncedCron with the `config` method.
          *

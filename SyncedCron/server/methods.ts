@@ -14,6 +14,7 @@ Meteor.methods({
         return parser.text(scheduleText);
       },
       job,
+      persist: true,
     });
   },
   syncedCronStart() {
